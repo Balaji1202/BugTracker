@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+<body>
+    <div id="addBookFormContent" style=" padding-left:90px" >
+        <br><br>
+        <h3 style="padding-left:160px;">
+            Found a new Bug? Never let it screw. Add it here.
+            <i class="fas fa-bug"></i>
+        </h3>
+        <br><br>
+            <div class="center_div" style="width: 700px; margin-left: 130px">
+                <form class="container-fluid">
+                    <div class="form-group">
+                        <label for="bugName" class="font-weight-bold">Bug Name:</label>
+                        <input type="text" class="form-control" id="bugName" placeholder="Enter bug name" required>
+                    </div>
+                    <br>
+                    <div class="form-group">
+                        <label for="bugDes" class="font-weight-bold">Bug Description</label>
+                        <textarea rows="3" cols="40" type="text" class="form-control" id="bugDes" placeholder="Enter descriptions if any" required></textarea>
+                    </div>
+                    <br>
+                    <div class="row">
+                        <div class="form-group col-6" id="status">
+                            <label class="font-weight-bold">Status of the Bug:</label>
+                            <select class="form-control" id="status">
+                                <option disabled selected>Enter the status of the bug</option>
+                                <option>Open</option>
+                                <option>Close</option>
+                                <option>Inprogress</option>
+                                <option>Testing</option>
+                                <option>Update</option>
+                            </select>
+                        </div>
+                        <div class="form-group col-6">
+                            <label class="font-weight-bold">Seriousness of the Bug:</label>
+                            <select class="form-control" id="status">
+                                <option disabled selected>Enter the seriousness of the bug</option>
+                                <option>Low</option>
+                                <option>Medium</option>
+                                <option>High</option>
+                                <option>Higher</option>
+                            </select>
+                        </div>
+                    </div>
+                    <br>
+                    <div class="row">
+                        <div class="col-6">
+                            <div class="form-group row">
+                                <label class = "font-weight-bold col-4" for="openDate">Bug opened date:</label>
+                                <input class = "form-control col-6" type="date" name="openDate" id="openDate">
+                            </div>
+                        </div>
+                        <div class="col-6">
+                            <div class="form-group row">
+                                <label class = "font-weight-bold col-4" for="closeDate">Bug estimated fix date:</label>
+                                <input class = "form-control col-6" type="date" name="closeDate" id="closeDate">
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="row">
+                        <div class="col">
+                            <p id="totalTime"></p>
+                        </div>
+                        <div class="col">
+                            <p id="remTime"></p>
+                        </div>
+                    </div>
+                    <br>
+                    <form action="" class="form-control-file form-control-sm row">
+                        <label for="chooseFile" class="col-3">Choose a File</label>
+                        <input class="btn btn-info form-control-file-sm" type="file" name="" id="">
+                    </form>
+                    <br>
+                        <button type="submit" class="btn btn-primary" style="margin-left:290px" >Submit</button>
+                </form>
+            </div>
+        </div>
+    </body>
+    <script src="../JSON/devAndBugData.js"></script>
+    <script src="../js/addBug.js"></script>
+</html>

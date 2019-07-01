@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+<body>
+    <h1 style="margin-left: 450px; margin-bottom: 20px">Bug Report</h1>
+    <div class="row">
+        <div class="col-4">
+            <div class="card" style="width: 300px;">
+                <canvas style="height: 250px;" id="chart1"></canvas>
+                <div class="card-body" style="text-align:center">
+                    <h5 class="card-title"> <i title="Previous" id = "loadPrevious1" 
+                        class="fas fa-caret-left loadPrevious"></i>
+                        Bugs Asssigned <i id= "loadNext1" title="Next" class="fas fa-caret-right loadNext"></i> </h5>
+                </div>
+            </div>
+        </div>
+
+        <div class="col-4">
+            <div class="card" style="width: 300px;">
+                <canvas data-chart="bar" style="height: 250px;" id="chart2">
+                </canvas>
+                <div class="card-body" style="text-align:center">
+                    <h5 class="card-title"> <i title="Previous" id = "loadPrevious2" 
+                        class="fas fa-caret-left loadPrevious"></i>
+                        Bugs Closed <i id= "loadNext2" title="Next" class="fas fa-caret-right loadNext"></i> </h5>
+                </div>
+            </div>
+        </div>
+
+        <div class="col-4">
+            <div class="card" style="width: 300px;">
+                <canvas data-chart="bar" style="height: 250px;" id="chart3">
+                </canvas>
+                <div class="card-body" style="text-align:center">
+                    <h5 class="card-title"> <i title="Previous" id = "loadPrevious3" 
+                        class="fas fa-caret-left loadPrevious"></i>
+                        Bugs Open <i id= "loadNext3" title="Next" class="fas fa-caret-right loadNext"></i> </h5>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="row" style="padding-top: 50px; padding-left: 150px">
+            <div class="col-5">
+                <div class="card" style="width: 300px;">
+                    <canvas data-chart="bar" style="height: 250px;" id="chart4">
+                    </canvas>
+                    <div class="card-body" style="text-align:center">
+                        <h5 class="card-title"> <i title="Previous" id = "loadPrevious4" 
+                            class="fas fa-caret-left loadPrevious"></i>
+                            Bugs Seriousness <i id= "loadNext4" title="Next" class="fas fa-caret-right loadNext"></i> </h5>
+                    </div>
+                </div>
+            </div>
+    
+            <div class="col-5">
+                <div class="card" style="width: 300px;">
+                    <canvas data-chart="bar" style="height: 250px;" id="chart5">
+                    </canvas>
+                    <div class="card-body" style="text-align:center">
+                        <h5 class="card-title"> <i title="Previous" id = "loadPrevious5" 
+                            class="fas fa-caret-left loadPrevious"></i>
+                            Bugs Status <i id= "loadNext5" title="Next" class="fas fa-caret-right loadNext"></i> </h5>
+                    </div>
+                </div>
+            </div>
+        </div>
+    <script src="../JSON/devAndBugData.js"></script>
+    <script src="../js/report.js"></script>
+</body>
+</html>

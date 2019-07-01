@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+<body>
+    <h3 style="margin-left:430px; padding-bottom: 20px">
+        Search developers!
+    </h3>
+    <div class="container" style="padding-bottom: 10px;">
+        <div class="row">
+            <div class="col-4">
+                <label class="font-weight-bold" for="devName" >Developer Name:</label>
+                <input class="form-control" type="text" autocomplete="new-password" list="dataList" autocomplete="false" id="devName">
+                <datalist id="dataList">
+                </datalist>
+            </div>
+            <div class="col-4">
+                <label class="font-weight-bold" for="devDesignation" >Developer designation:</label>
+                <select class="form-control" id="devDesignation">
+                    <option disabled selected>Enter designation of the Developer</option>
+                    <option>Senior Developer</option>
+                    <option>Junior Developer</option>
+                    <option>Trainee</option>
+                    <option>Tester</option>
+                    <option>Analyst</option>
+                </select>
+            </div>
+            <div class="col-4">
+                <label class="font-weight-bold" for="devExp">Developer experience:</label>
+                <select class="form-control" id="devExp">
+                    <option disabled selected>Enter the Experience of the dev</option>
+                    <option>0-2</option>
+                    <option>2-5</option>
+                    <option>5-10</option>
+                    <option>>10</option>
+                </select>
+            </div>
+        </div>
+        <div class="row">
+            <div style="padding-left: 350px; padding-top: 50px">
+                <h3>Sort the results based on:</h3>
+            </div>
+            <div style="padding-top: 50px; margin-left: -400px">
+                <label class="form-check-label" style="padding:40px">
+                    <input type="checkbox" class="form-check-input" value="" id="seriousness">Bugs Assigned
+                </label>
+                <label class="form-check-label" style="padding:40px">
+                    <input type="checkbox" class="form-check-input" value="" id="dueDate">Bugs Alive
+                </label>
+                <label class="form-check-label" style="padding:40px">
+                    <input type="checkbox" class="form-check-input" value="" id="startDate">Bugs Inprogress
+                </label>
+            </div>
+        </div>
+        <div class="row">
+            <div style="margin-left:40%; padding-top: 20px">
+                <button class="btn btn-primary" id="searchButton"><i style="padding-right: 10px" class="fa fa-search"></i>Search</button>
+            </div>
+        </div>
+    </div>
+    <div class="container">
+        <table id="tableHead" class="table" style="table-layout:fixed; display: none; margin-bottom: 0px">
+            <thead>
+                <tr style="background:#DCDCDC; border: 2px black solid">
+                    <th>BOOK NAME</th>
+                    <th>DESIGNATION</th>
+                    <th>EXPERIENCE</th>
+                    <th>BUGS ASSIGNED</th>
+                    <th>BUGS ALIVE</th>
+                    <th>BUGS RESOLVED</th>
+                </tr>
+            </thead>
+        </table>
+        <div  style="padding: 40px;margin-left: 330px" id="beforeSearch">
+            <h2 id="searchQueryText" >Search the apt Dev!</h2>
+            <i class="fas fa-laptop-code" style="font-size: 100px; padding-left: 70px; padding-top: 100px"></i>
+        </div>
+        <div style= "max-height: 500px; overflow:auto;" id="showData"></div>
+    </div>
+    <script src="../js/search.js"></script>
+</body>
+</html>

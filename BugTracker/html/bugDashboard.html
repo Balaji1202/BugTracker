@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+<body>
+    <h3 style="margin-left:430px; padding-bottom: 20px">
+        Search the bugs!
+    </h3>
+    <div class="container" style="padding-bottom: 10px;">
+        <div class="row">
+            <div class="col-3">
+                <label class="font-weight-bold" for="bugName" >Bug Name:</label>
+                <input class="form-control" type="text" autocomplete="new-password" list="dataList" autocomplete="false" id="bugName">
+                <datalist id="dataList">
+                </datalist>
+            </div>
+            <div class="col-3">
+                <label class="font-weight-bold" for="devName" >Developer Assigned:</label>
+                <input class="form-control" type="text" autocomplete="new-password" list="dataList" autocomplete="false" id="devName">
+                <datalist id="dataList">
+                </datalist>
+            </div>
+            <div class="col-3">
+                <label class="font-weight-bold" for="status">Bug Status:</label>
+                <select class="form-control" id="status">
+                    <option disabled selected>Enter the status of the bug</option>
+                    <option>Low</option>
+                    <option>Medium</option>
+                    <option>High</option>
+                    <option>Higher</option>
+                </select>
+            </div>
+            <div class="col-3">
+                <label class="font-weight-bold" for="seriousness">Bug Seriousness:</label>
+                <select class="form-control" id="seriousness">
+                    <option disabled selected>Enter the seriousness of the bug</option>
+                    <option>Open</option>
+                    <option>Close</option>
+                    <option>Inprogress</option>
+                    <option>Testing</option>
+                    <option>Update</option>
+                </select>
+            </div>
+        </div>
+        <div class="row">
+            <div style="padding-left: 350px; padding-top: 50px">
+                <h3>Sort the results based on:</h3>
+            </div>
+            <div style="padding-top: 50px; margin-left: -400px">
+                <label class="form-check-label" style="padding:40px">
+                    <input type="checkbox" class="form-check-input" value="" id="seriousness">Seriousness
+                </label>
+                <label class="form-check-label" style="padding:40px">
+                    <input type="checkbox" class="form-check-input" value="" id="dueDate">Due date
+                </label>
+                <label class="form-check-label" style="padding:40px">
+                    <input type="checkbox" class="form-check-input" value="" id="startDate">Start date
+                </label>
+            </div>
+        </div>
+        <div class="row">
+            <div style="margin-left:40%; padding-top: 20px">
+                <button class="btn btn-primary" id="searchButton"><i style="padding-right: 10px" class="fa fa-search"></i>Search</button>
+            </div>
+        </div>
+    </div>
+    <div class="container">
+        <table id="tableHead" class="table" style="table-layout:fixed; display: none; margin-bottom: 0px">
+            <thead>
+                <tr style="background:#DCDCDC; border: 2px black solid">
+                    <th>BUG TITLE</th>
+                    <th>SERIOUSNESS</th>
+                    <th>DEV ASSIGNED</th>
+                    <th>STATUS</th>
+                    <th>START DATE</th>
+                    <th>DUE DATE</th>
+                </tr>
+            </thead>
+        </table>
+        <div  style="padding: 40px;margin-left: 330px" id="beforeSearch">
+            <h2 id="searchQueryText" >Search for a bug!</h2>
+            <i class="fas fa-bug" style="font-size: 100px; padding-left: 70px; padding-top: 100px"></i>
+        </div>
+        <div style= "max-height: 500px; overflow:auto;" id="showData"></div>
+    </div>
+    <script src="../js/search.js"></script>
+</body>
+</html>

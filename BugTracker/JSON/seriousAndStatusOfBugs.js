@@ -1,0 +1,1 @@
+devAndBugData = [{'Open':209},{'Close':390},{'Inprogress':129},{'Testing':23},{'Update':54}];
