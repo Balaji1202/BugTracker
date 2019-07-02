@@ -1,5 +1,4 @@
-var FormValidate = {
-    devs: devAndBugData,
+var FormValidate = { 
 
     settings: {
         bugName:   document.getElementById("bugName"),

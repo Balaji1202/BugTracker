@@ -58,7 +58,6 @@ $('window').ready(function(){
         makeMenuActive(event);
         loadContent(event);
       };
-    
       function makeMenuActive(event)
       {
         let x = document.getElementById('sidebarFunction').querySelectorAll(".row");

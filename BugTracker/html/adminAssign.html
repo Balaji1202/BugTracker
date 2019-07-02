@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en">
+<body>
+    <div id="addBookFormContent" style=" padding-left:90px" >
+        <br><br>
+        <h3 style="padding-left:230px;">
+            Admin portal for adding and assigning a new Bug.
+            <i class="fas fa-bug"></i>
+        </h3>
+        <br><br>
+        <div class="center_div" style="width: 600px; margin-left: 180px; border: black 2px dashed; padding: 20px;">
+                <form class="container-fluid">
+                    <div class="form-group">
+                        <label for="bugName" class="font-weight-bold">Bug Name:</label>
+                        <input class="form-control" type="text" autocomplete="new-password" list="dataList1" autocomplete="false" id="bugName">
+                        <datalist id="dataList1">
+                        </datalist>
+                    </div>
+                    <div class="form-group">
+                        <label for="devName" class="font-weight-bold">Dev Name:</label>
+                        <input class="form-control" type="text" autocomplete="new-password" list="dataList2" autocomplete="false" id="devName">
+                        <datalist id="dataList2">
+                        </datalist>
+                    </div>
+                    <div class="form-group">
+                        <label for="bugDes" class="font-weight-bold">Bug Description</label>
+                        <textarea rows="3" cols="40" type="text" class="form-control" id="bugDes" placeholder="Enter descriptions if any" required></textarea>
+                    </div>
+                    <div class="form-group" id="status">
+                        <label class="font-weight-bold">Status of the Bug:</label>
+                        <select class="form-control" id="status">
+                            <option disabled selected>Enter the status of the bug</option>
+                            <option>Open</option>
+                            <option>Close</option>
+                            <option>Inprogress</option>
+                            <option>Testing</option>
+                            <option>Update</option>
+                        </select>
+                    </div>
+                    <div class="form-group ">
+                        <label class="font-weight-bold">Seriousness of the Bug:</label>
+                        <select class="form-control" id="seriousness">
+                            <option disabled selected>Enter the seriousness of the bug</option>
+                            <option>Low</option>
+                            <option>Medium</option>
+                            <option>High</option>
+                            <option>Higher</option>
+                        </select>
+                    </div>
+                    <div>
+                        <div class="form-group row">
+                            <label class = "font-weight-bold col-4" for="openDate">Bug opened date:</label>
+                            <input class = "form-control col-6" type="date" name="openDate" id="openDate">
+                        </div>
+                    </div>
+                    <div>
+                        <div class="form-group row">
+                            <label class = "font-weight-bold col-4" for="closeDate">Bug estimated fix date:</label>
+                            <input class = "form-control col-6" type="date" name="closeDate" id="closeDate">
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col">
+                            <p id="totalTime"></p>
+                        </div>
+                        <div class="col">
+                            <p id="remTime"></p>
+                        </div>
+                    </div>
+                    <br>
+                    <form action="" class="form-control-file form-control-sm">
+                        <label for="chooseFile">Choose a File</label>
+                        <input class="btn btn-default form-control-file" type="file" name="" id="bugFile">
+                    </form>
+                    <br>
+                        <button type="submit" class="btn btn-primary" style="margin-left:250px" id="submit" >Submit</button>
+                </form>
+            </div>
+        </div>
+        <div style="padding: 30px; margin-left: 39%">
+            <button class="btn btn-primary" id="create">
+            Persist Data
+            </button>
+            <a id="download" download="BugAndDevReport.txt" style="display: none; padding: 20px">Download</a>
+        </div>
+    </body>
+    <script src="../JSON/bugdata.js"></script>
+    <!-- <script src="../js/addBug.js"></script> -->
+    <script src="../js/persistedData.js"></script>
+    <script src="../js/assignBug.js"></script>
+</html>

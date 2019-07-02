@@ -1,22 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+<body>
 <h3 style="text-align: center; padding: 20px">Welcome!</h3>
-<div class="row">
+<div class="row" id="adminClick">
     <div class="col-4" style="padding: 50px">
         <div class="card" style="width: 18rem;">
             <img class="card-img-top" src="../images/adminBug.png" width="150px" height="200px" alt="Card image cap">
             <div class="card-body">
                 <h5 class="card-title">Create and assign bug</h5>
                 <p class="card-text">Found a new Bug!? Assign it to a developer here.</p>
-                <a style="padding: 0px 95px" href="#" id="adminBug" class="btn btn-primary">Do Now!</a>
+                <a style="padding: 0px 95px" href="#" id="adminAssign" class="btn btn-primary">Do Now!</a>
             </div>
         </div>
     </div>
-    <div class="col-4" style="padding: 50px">
+    <div class="col-4" style="padding: 50px; padding-top: 100px">
         <div class="card" style="width: 18rem;">
             <img class="card-img-top" src="../images/adminDev.jpeg" width="150px" height="200px" alt="Card image cap">
             <div class="card-body">
-                <h5 class="card-title">Assign a dev with the right bug!</h5>
-                <p class="card-text">Why leave a developer free! Assign them with the right bug here.</p>
-                <a style="padding: 0px 95px" href="#" id="adminDev" class="btn btn-primary">Do Now!</a>
+                <h5 class="card-title">Search the content!</h5>
+                <p class="card-text">Search the bug problem, status, due date and more! Here!.</p>
+                <a style="padding: 0px 95px" href="#" id="adminSearch" class="btn btn-primary">Do Now!</a>
             </div>
         </div>
     </div>
@@ -30,5 +33,14 @@
             </div>
         </div>
     </div>
-
+<div style="padding: 30px; margin-left: 40%">
+    <button class="btn btn-primary" id="create">
+    Persist Data
+    </button>
+    <a id="download" download="BugAndDevReport.txt" style="display: none; padding: 20px">Download</a>
 </div>
+</div>
+<script src="../JSON/bugdata.js"></script>
+<script src="../js/persistedData.js"></script>
+<script src="../js/adminContent.js"></script>
+</body>

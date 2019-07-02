@@ -18,6 +18,7 @@ if(typeof ChartLabel !== "function") {
             this.rowField = chartInstance.rowField;
             this.loadIndex = chartInstance.loadIndex;
             this.count = chartInstance.count;
+            this.display = chartInstance.display;
         }
 
         init() {
@@ -70,7 +71,11 @@ if(typeof ChartLabel !== "function") {
                         data: this.bugLabel,
                     }]
                 },
-                options: {}
+                options: {
+                    legend:{
+                        display: this.display,
+                    },
+                },
             });
             return this.chartObj;
         }
@@ -92,6 +97,7 @@ if(typeof ChartLabel !== "function") {
         rowField: 'Name',
         loadIndex: 0,
         count: 7,
+        display: false,
     }
     ChartLabelObj = new ChartLabel(chartInstance);
     ChartLabelObj.init();
@@ -112,6 +118,7 @@ if(typeof ChartLabel !== "function") {
         rowField: 'Name',
         loadIndex: 0,
         count: 7,
+        display: false,
     }
     ChartLabelObj = new ChartLabel(chartInstance);
     ChartLabelObj.init();
@@ -132,6 +139,7 @@ if(typeof ChartLabel !== "function") {
         rowField: 'Name',
         loadIndex: 0,
         count: 7,
+        display: false,
     }
     ChartLabelObj = new ChartLabel(chartInstance);
     ChartLabelObj.init();
@@ -152,6 +160,7 @@ if(typeof ChartLabel !== "function") {
         rowField: 'Name',
         loadIndex: 0,
         count: 4,
+        display: true,
     }
     ChartLabelObj = new ChartLabel(chartInstance);
     ChartLabelObj.init();
@@ -172,6 +181,7 @@ if(typeof ChartLabel !== "function") {
         rowField: 'Name',
         loadIndex: 0,
         count: 5,
+        display: true,
     }
     ChartLabelObj = new ChartLabel(chartInstance);
     ChartLabelObj.init();
