@@ -115,6 +115,7 @@ body{
     position:fixed;
     width: 100%;
     box-shadow:-10px 2px 2px;
+    opacity: 0.9;
   }
 
   .active

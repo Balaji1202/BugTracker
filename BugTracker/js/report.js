@@ -59,24 +59,26 @@ if(typeof ChartLabel !== "function") {
                 this.devLabel.push(this.devsAndBugs[i][this.rowField]);
                 this.bugLabel.push(this.devsAndBugs[i][this.colField]);
             }
-            var ctx = this.chart.getContext('2d');
-            this.chartObj = new Chart(ctx, {
-                type: this.typeOfChart,
-                data: {
-                    labels: this.devLabel,
-                    datasets: [{
-                        label: this.label,
-                        backgroundColor: this.backgroundColor,
-                        borderColor: this.borderColor,
-                        data: this.bugLabel,
-                    }]
-                },
-                options: {
-                    legend:{
-                        display: this.display,
+            if(this.chart) {
+                var ctx = this.chart.getContext('2d');
+                this.chartObj = new Chart(ctx, {
+                    type: this.typeOfChart,
+                    data: {
+                        labels: this.devLabel,
+                        datasets: [{
+                            label: this.label,
+                            backgroundColor: this.backgroundColor,
+                            borderColor: this.borderColor,
+                            data: this.bugLabel,
+                        }]
                     },
-                },
-            });
+                    options: {
+                        legend:{
+                            display: this.display,
+                        },
+                    },
+                });
+            }
             return this.chartObj;
         }
     };

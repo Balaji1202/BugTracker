@@ -8,45 +8,34 @@
         <div class="row">
             <div class="col-4">
                 <label class="font-weight-bold" for="devName" >Developer Name:</label>
-                <input class="form-control" type="text" autocomplete="new-password" list="dataList" autocomplete="false" id="devName">
-                <datalist id="dataList">
+                <input class="form-control" type="text" autocomplete="new-password" list="dataList1" autocomplete="false" id="devName">
+                <datalist id="dataList1">
                 </datalist>
             </div>
             <div class="col-4">
-                <label class="font-weight-bold" for="devDesignation" >Developer designation:</label>
-                <select class="form-control" id="devDesignation">
-                    <option disabled selected>Enter designation of the Developer</option>
-                    <option>Senior Developer</option>
-                    <option>Junior Developer</option>
-                    <option>Trainee</option>
-                    <option>Tester</option>
-                    <option>Analyst</option>
-                </select>
+                <label class="font-weight-bold" for="devDesignation" >Developer Mail id:</label>
+                <input class="form-control" type="text" autocomplete="new-password" list="dataList2" autocomplete="false" id="devMail">
+                <datalist id="dataList2">
+                </datalist>
             </div>
             <div class="col-4">
                 <label class="font-weight-bold" for="devExp">Developer experience:</label>
-                <select class="form-control" id="devExp">
-                    <option disabled selected>Enter the Experience of the dev</option>
-                    <option>0-2</option>
-                    <option>2-5</option>
-                    <option>5-10</option>
-                    <option>>10</option>
-                </select>
+                <input class="form-control" min="1" max="9"id="devExp" type="number"></input>
             </div>
         </div>
-        <div class="row">
+        <div class="row" style="display: none">
             <div style="padding-left: 350px; padding-top: 50px">
                 <h3>Sort the results based on:</h3>
             </div>
             <div style="padding-top: 50px; margin-left: -400px">
                 <label class="form-check-label" style="padding:40px">
-                    <input type="checkbox" class="form-check-input" value="" id="seriousness">Bugs Assigned
+                    <input type="checkbox" class="form-check-input" value="" id="bugsAssigned">Bugs Assigned
                 </label>
                 <label class="form-check-label" style="padding:40px">
-                    <input type="checkbox" class="form-check-input" value="" id="dueDate">Bugs Alive
+                    <input type="checkbox" class="form-check-input" value="" id="bugsAlive">Bugs Alive
                 </label>
                 <label class="form-check-label" style="padding:40px">
-                    <input type="checkbox" class="form-check-input" value="" id="startDate">Bugs Inprogress
+                    <input type="checkbox" class="form-check-input" value="" id="bugsInProgress">Bugs Inprogress
                 </label>
             </div>
         </div>
@@ -56,16 +45,59 @@
             </div>
         </div>
     </div>
+
     <div class="container">
         <table id="tableHead" class="table" style="table-layout:fixed; display: none; margin-bottom: 0px">
             <thead>
-                <tr style="background:#DCDCDC; border: 2px black solid">
-                    <th>BOOK NAME</th>
-                    <th>DESIGNATION</th>
-                    <th>EXPERIENCE</th>
-                    <th>BUGS ASSIGNED</th>
-                    <th>BUGS ALIVE</th>
-                    <th>BUGS RESOLVED</th>
+                <tr style="border: 2px black solid; box-shadow:-2px 2px 2px" id="searchRow">
+                    <th>DEVELOPER NAME
+                        <select class="form-control" id="devNameSort">
+                            <option value="" disabled selected>Sort</option>
+                            <option value="">None</option>
+                            <option value="1">Ascending</option>
+                            <option value="2">Descending</option>
+                        </select>
+                    </th>
+                    <th>MAIL ID
+                        <select class="form-control" id="devMailSort">
+                            <option value="" disabled selected>Sort</option>
+                            <option value="">None</option>
+                            <option value="1">Ascending</option>
+                            <option value="2">Descending</option>
+                        </select>
+                    </th>
+                    <th>EXPERIENCE
+                        <select class="form-control" id="devExpSort">
+                            <option value="" disabled selected>Sort</option>
+                            <option value="">None</option>
+                            <option value="1">Ascending</option>
+                            <option value="2">Descending</option>
+                        </select>
+                    </th>
+                    <th>BUGS ASSIGNED COUNT
+                        <select class="form-control" id="bugsAssignedSort">
+                            <option value="" disabled selected>Sort</option>
+                            <option value="">None</option>
+                            <option value="1">Ascending</option>
+                            <option value="2">Descending</option>
+                        </select>
+                    </th>
+                    <th>BUGS ALIVE COUNT
+                        <select class="form-control" id="bugsAliveSort">
+                            <option value="" disabled selected>Sort</option>
+                            <option value="">None</option>
+                            <option value="1">Ascending</option>
+                            <option value="2">Descending</option>
+                        </select>
+                    </th>
+                    <th>BUGS SOLVED COUNT
+                        <select class="form-control" id="bugsSolvedSort">
+                            <option value="" disabled selected>Sort</option>
+                            <option value="">None</option>
+                            <option value="1">Ascending</option>
+                            <option value="2">Descending</option>
+                        </select>
+                    </th>
                 </tr>
             </thead>
         </table>
@@ -75,6 +107,7 @@
         </div>
         <div style= "max-height: 500px; overflow:auto;" id="showData"></div>
     </div>
-    <script src="../js/search.js"></script>
+    <script src="../JSON/devData.js"></script>
+    <script src="../js/devSearch.js"></script>
 </body>
 </html>

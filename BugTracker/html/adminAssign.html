@@ -3,7 +3,7 @@
 <body>
     <div id="addBookFormContent" style=" padding-left:90px" >
         <br><br>
-        <h3 style="padding-left:230px;">
+        <h3 style="padding-left:160px;">
             Admin portal for adding and assigning a new Bug.
             <i class="fas fa-bug"></i>
         </h3>
@@ -12,13 +12,13 @@
                 <form class="container-fluid">
                     <div class="form-group">
                         <label for="bugName" class="font-weight-bold">Bug Name:</label>
-                        <input class="form-control" type="text" autocomplete="new-password" list="dataList1" autocomplete="false" id="bugName">
+                        <input class="form-control" type="text" autocomplete="new-password" list="dataList1" autocomplete="false" id="bugName" required>
                         <datalist id="dataList1">
                         </datalist>
                     </div>
                     <div class="form-group">
                         <label for="devName" class="font-weight-bold">Dev Name:</label>
-                        <input class="form-control" type="text" autocomplete="new-password" list="dataList2" autocomplete="false" id="devName">
+                        <input class="form-control" type="text" autocomplete="new-password" list="dataList2" autocomplete="false" id="devName" required>
                         <datalist id="dataList2">
                         </datalist>
                     </div>
@@ -77,7 +77,7 @@
                 </form>
             </div>
         </div>
-        <div style="padding: 30px; margin-left: 39%">
+        <div style="padding: 30px; margin-left: 41.5%">
             <button class="btn btn-primary" id="create">
             Persist Data
             </button>

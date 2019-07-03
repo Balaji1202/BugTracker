@@ -45,7 +45,7 @@ var FormValidate = {
         let today = new Date();
         today = closeDate - today;
         FormValidate.settings.rem = Math.round(today/(1000 * 3600 * 24));
-        FormValidate.settings.remTime.innerHTML = "Remaining time is "+FormValidate.settings.rem+" day(s)";
+        FormValidate.settings.remTime.innerHTML = "Remaining time for due is "+FormValidate.settings.rem+" day(s)";
     },
 
     isValid: function() {

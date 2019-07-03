@@ -2,21 +2,44 @@ var BugDevSearch = {
 
     settings : {
         tableHead: document.getElementById("tableHead"),
-        bugName: String,  
-        status: String,
-        seriousness: String,
         filterdData: [],
         divContainer: document.getElementById("showData"),
-        seriousness: document.getElementById("seriousness"),
-        startDate: document.getElementById("startDate"),
-        dueDate: document.getElementById("dueDate"),
-        bugsData: bugdata,
+        devName: String,
+        devMail: String,
+        devExp: String,
+        bugsAssignedSort: document.getElementById("bugsAssignedSort"),
+        bugsAliveSort: document.getElementById("bugsAliveSort"),
+        bugsSolvedSort: document.getElementById("bugsSolvedSort"),
+        devNameSort: document.getElementById("devNameSort"),
+        devMailSort: document.getElementById("devMailSort"),
+        devExpSort: document.getElementById("devExpSort"),
+        bugsData: bugData,
     },
 
     initSearch: function() {
         BugDevSearch.createTableFromJSON();
+
         Suggestions.settings.search.addEventListener("click", function() {
             Suggestions.waitToLoadData();
+        });
+        
+        BugDevSearch.settings.devNameSort.addEventListener("change", function() {
+            BugDevSearch.sortFilteredData('devNameSort', 'Name');
+        });
+        BugDevSearch.settings.devMailSort.addEventListener("change", function() {
+            BugDevSearch.sortFilteredData('devMailSort', 'Email');
+        });
+        BugDevSearch.settings.devExpSort.addEventListener("change", function() {
+            BugDevSearch.sortFilteredData('devExpSort', 'Experience');
+        });
+        BugDevSearch.settings.bugsAssignedSort.addEventListener("change", function() {
+            BugDevSearch.sortFilteredData('bugsAssignedSort', 'BugAssignedCount');
+        });
+        BugDevSearch.settings.bugsAliveSort.addEventListener("change", function() {
+            BugDevSearch.sortFilteredData('bugsAliveSort', 'BugAliveCount');
+        });
+        BugDevSearch.settings.bugsSolvedSort.addEventListener("change", function() {
+            BugDevSearch.sortFilteredData('bugsSolvedSort', 'BugResolvedCount');
         });
     },
 
@@ -33,39 +56,37 @@ var BugDevSearch = {
 
     filterBugs: function() {
         BugDevSearch.settings.divContainer.innerHTML = "";
-        BugDevSearch.settings.bugName = document.getElementById("bugName").value.toLowerCase();
-        BugDevSearch.settings.status = document.getElementById("status").value.toLowerCase();
-        BugDevSearch.settings.seriousness = document.getElementById("seriousness").value.toLowerCase();
+        BugDevSearch.settings.devName = document.getElementById("devName").value.toLowerCase();
+        BugDevSearch.settings.devMail = document.getElementById("devMail").value.toLowerCase();
+        BugDevSearch.settings.devExp = document.getElementById("devExp").value.toLowerCase();
         
         BugDevSearch.settings.tableHead.style.removeProperty('display');
-        const filterCondition = d =>    d.bugtitle.toLowerCase().indexOf(BugDevSearch.settings.bugName) > -1 && 
-                                        d.seriousness.toLowerCase().indexOf(BugDevSearch.settings.seriousness) > -1 &&
-                                        d.status.toLowerCase().indexOf(BugDevSearch.settings.status) > -1 ;
+        const filterCondition = d =>    d.Name.toLowerCase().indexOf(BugDevSearch.settings.devName) > -1 &&
+                                        d.Email.toLowerCase().indexOf(BugDevSearch.settings.devMail) > -1 &&
+                                        d.Experience.toString().toLowerCase().indexOf(BugDevSearch.settings.devExp) > -1;
 
         BugDevSearch.settings.filterdData = BugDevSearch.settings.bugsData.filter(filterCondition);
-        
-        
-        if(BugDevSearch.settings.seriousness.checked == true) {
+    },
+
+    sortFilteredData: function(sortColumn, field ) {
+
+        BugDevSearch.filterBugs();
+
+        if(BugDevSearch.settings[sortColumn].value == 1) {
             BugDevSearch.settings.filterdData = BugDevSearch.settings.filterdData
                                             .sort(function(a, b)
                                             {
-                                                return (a["value"] < b["value"]) ? 1 : ((a["value"] > b["value"]) ? -1 : 0);
+                                                return (a[field] > b[field]) ? 1 : ((a[field] < b[field]) ? -1 : 0);
                                             });  
-            }
-        if(BugDevSearch.settings.startDate.checked == true) {
+        }
+        else if(BugDevSearch.settings[sortColumn].value == 2) {
             BugDevSearch.settings.filterdData = BugDevSearch.settings.filterdData
                                             .sort(function(a, b)
                                             {
-                                                return (a["opendate"] > b["opendate"]) ? 1 : ((a["opendate"] < b["opendate"]) ? -1 : 0);
+                                                return (a[field] < b[field]) ? 1 : ((a[field] > b[field]) ? -1 : 0);
                                             });  
-            }
-        if(BugDevSearch.settings.dueDate.checked == true) {
-            BugDevSearch.settings.filterdData = BugDevSearch.settings.filterdData
-                                            .sort(function(a, b)
-                                            {
-                                                return (a["closedate"] > b["closedate"]) ? 1 : ((a["closedate"] < b["closedate"]) ? -1 : 0);
-                                            });  
-            }
+        }
+        BugDevSearch.constructTable();
     },
 
     constructTable: function() {
@@ -88,8 +109,6 @@ var BugDevSearch = {
                 tr = table.insertRow(-1);
 
                 for (var j = 0; j < col.length; j++) {
-                    if(j == 4)
-                        continue;
                     var tabCell = tr.insertCell(-1);
                     tabCell.innerHTML = BugDevSearch.settings.filterdData[i][col[j]];
                 }
@@ -112,37 +131,40 @@ var BugDevSearch = {
 var Suggestions = {
     
     settings: {
-        dataList1: document.getElementById("dataList1"),
         dataList2: document.getElementById("dataList2"),
         arrayList: [],  
-        bugInput: document.getElementById("bugName"),
         devInput: document.getElementById("devName"),
+        devMail: document.getElementById("devMail"),
         search: document.getElementById("searchButton"),
-        bugName: String
+        devName: String
     },
 
     initSuggestion: function() {
-        
-        if(Suggestions.settings.bugInput) {
-            Suggestions.settings.bugInput.addEventListener("input", function() {
-                Suggestions.displayResultOnSuggestionClick(event);
-            });
-            
-            Suggestions.settings.bugInput.addEventListener("keyup", function(event)
-            {
-                Suggestions.searchOnEnter(event);
-            });
-            
-            Suggestions.settings.bugInput.addEventListener("focus", function() {
-                Suggestions.loadDataList(dataList1, 'bugtitle');
-            });
-        }
+        Suggestions.settings.devInput.addEventListener("focus", function() {
+            Suggestions.loadDataList(dataList1, 'Name');
+        });
 
-        if(Suggestions.settings.devInput) {
-            Suggestions.settings.devInput.addEventListener("focus", function() {
-                Suggestions.loadDataList(dataList2, 'developername');
-            });
-        }
+        Suggestions.settings.devMail.addEventListener("focus", function() {
+            Suggestions.loadDataList(dataList2, 'Email');
+        });
+
+        Suggestions.settings.devInput.addEventListener("input", function() {
+            Suggestions.displayResultOnSuggestionClick(event);
+        });
+        
+        Suggestions.settings.devInput.addEventListener("keyup", function(event)
+        {
+            Suggestions.searchOnEnter(event);
+        });
+
+        Suggestions.settings.devMail.addEventListener("input", function() {
+            Suggestions.displayResultOnSuggestionClick(event);
+        });
+        
+        Suggestions.settings.devMail.addEventListener("keyup", function(event)
+        {
+            Suggestions.searchOnEnter(event);
+        });
         Suggestions.settings.search.addEventListener("click", function() {
             Suggestions.waitToLoadData();
         });
@@ -186,14 +208,28 @@ var Suggestions = {
 
     displayResultOnSuggestionClick: function()
     {
-        Suggestions.settings.bugName = document.getElementById("bugName").value;
-        if($('#dataList option').filter(function() { return this.value.toUpperCase() === Suggestions.settings.bugName.toUpperCase(); }).length)
+        Suggestions.settings.devName = document.getElementById("devName").value;
+        if($('#dataList option').filter(function() { return this.value.toUpperCase() === Suggestions.settings.devName.toUpperCase(); }).length)
         {
             Suggestions.settings.search.click();
         }
     },
 };
 
+var SearchBox = {
+
+    settings: {
+        row: document.getElementById("searchRow"),
+        devInput: document.getElementById(""),
+    },
+
+    init: function() {
+        SearchBox.settings.row.addEventListener("click", function() {
+            event.target.style.display = "block";
+        })
+    }
+}
+// SearchBox.init();
 Suggestions.initSuggestion();
 BugDevSearch.initSearch();
 
