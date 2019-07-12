@@ -2,14 +2,16 @@ var BugDevSearch = {
 
     settings : {
         tableHead: document.getElementById("tableHead"),
+        divContainer: document.getElementById("showData"),
         bugName: String,  
         status: String,
         seriousness: String,
         filterdData: [],
-        divContainer: document.getElementById("showData"),
-        seriousness: document.getElementById("seriousness"),
-        startDate: document.getElementById("startDate"),
-        dueDate: document.getElementById("dueDate"),
+        bugsNameSort: document.getElementById("bugsNameSort"),
+        statusSort: document.getElementById("statusSort"),
+        seriousnessSort: document.getElementById("seriousnessSort"),
+        startDateSort: document.getElementById("startDateSort"),
+        dueDateSort: document.getElementById("dueDateSort"),
         bugsData: bugdata,
     },
 
@@ -17,6 +19,22 @@ var BugDevSearch = {
         BugDevSearch.createTableFromJSON();
         Suggestions.settings.search.addEventListener("click", function() {
             Suggestions.waitToLoadData();
+        });
+
+        BugDevSearch.settings.bugsNameSort.addEventListener("change", function() {
+            BugDevSearch.sortFilteredData('bugsNameSort', 'bugtitle');
+        });
+        BugDevSearch.settings.statusSort.addEventListener("change", function() {
+            BugDevSearch.sortFilteredData('statusSort', 'status');
+        });
+        BugDevSearch.settings.seriousnessSort.addEventListener("change", function() {
+            BugDevSearch.sortFilteredData('seriousnessSort', 'seriousnessValue');
+        });
+        BugDevSearch.settings.startDateSort.addEventListener("change", function() {
+            BugDevSearch.sortFilteredData('startDateSort', 'opendate');
+        });
+        BugDevSearch.settings.dueDateSort.addEventListener("change", function() {
+            BugDevSearch.sortFilteredData('dueDateSort', 'closedate');
         });
     },
 
@@ -44,28 +62,27 @@ var BugDevSearch = {
 
         BugDevSearch.settings.filterdData = BugDevSearch.settings.bugsData.filter(filterCondition);
         
-        
-        if(BugDevSearch.settings.seriousness.checked == true) {
+    },
+
+    sortFilteredData: function(sortColumn, field ) {
+
+        BugDevSearch.filterBugs();
+
+        if(BugDevSearch.settings[sortColumn].value == 1) {
             BugDevSearch.settings.filterdData = BugDevSearch.settings.filterdData
                                             .sort(function(a, b)
                                             {
-                                                return (a["value"] < b["value"]) ? 1 : ((a["value"] > b["value"]) ? -1 : 0);
+                                                return (a[field] > b[field]) ? 1 : ((a[field] < b[field]) ? -1 : 0);
                                             });  
-            }
-        if(BugDevSearch.settings.startDate.checked == true) {
+        }
+        else if(BugDevSearch.settings[sortColumn].value == 2) {
             BugDevSearch.settings.filterdData = BugDevSearch.settings.filterdData
                                             .sort(function(a, b)
                                             {
-                                                return (a["opendate"] > b["opendate"]) ? 1 : ((a["opendate"] < b["opendate"]) ? -1 : 0);
+                                                return (a[field] < b[field]) ? 1 : ((a[field] > b[field]) ? -1 : 0);
                                             });  
-            }
-        if(BugDevSearch.settings.dueDate.checked == true) {
-            BugDevSearch.settings.filterdData = BugDevSearch.settings.filterdData
-                                            .sort(function(a, b)
-                                            {
-                                                return (a["closedate"] > b["closedate"]) ? 1 : ((a["closedate"] < b["closedate"]) ? -1 : 0);
-                                            });  
-            }
+        }
+        BugDevSearch.constructTable();
     },
 
     constructTable: function() {
@@ -88,7 +105,7 @@ var BugDevSearch = {
                 tr = table.insertRow(-1);
 
                 for (var j = 0; j < col.length; j++) {
-                    if(j == 4)
+                    if(j == 3 || j == 1 || j == 5)
                         continue;
                     var tabCell = tr.insertCell(-1);
                     tabCell.innerHTML = BugDevSearch.settings.filterdData[i][col[j]];

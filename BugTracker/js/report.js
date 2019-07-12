@@ -1,4 +1,5 @@
 if(typeof ChartLabel !== "function") {
+    
     class ChartLabel {
         
         constructor(chartInstance) {

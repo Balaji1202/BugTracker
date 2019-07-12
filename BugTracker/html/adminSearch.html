@@ -40,23 +40,7 @@
                 </select>
             </div>
         </div>
-        <div class="row">
-            <div style="padding-left: 350px; padding-top: 50px">
-                <h3>Sort the results based on:</h3>
-            </div>
-            <div style="padding-top: 50px; margin-left: -400px">
-                <label class="form-check-label" style="padding:40px">
-                    <input type="checkbox" class="form-check-input" value="" id="seriousness">Seriousness
-                </label>
-                <label class="form-check-label" style="padding:40px">
-                    <input type="checkbox" class="form-check-input" value="" id="dueDate">Due date
-                </label>
-                <label class="form-check-label" style="padding:40px">
-                    <input type="checkbox" class="form-check-input" value="" id="startDate">Start date
-                </label>
-            </div>
-        </div>
-        <div class="row">
+        <div class="row" style="padding-top: 20px">
             <div style="margin-left:40%;">
                 <button class="btn btn-primary" id="searchButton"><i style="padding-right: 10px" class="fa fa-search"></i>Search</button>
             </div>
@@ -66,12 +50,54 @@
         <table id="tableHead" class="table" style="table-layout:fixed; display: none; margin-bottom: 0px">
             <thead>
                 <tr style="border: 2px black solid; box-shadow:-2px 2px 2px">
-                    <th>BUG TITLE</th>
-                    <th>DEV ASSIGNED</th>
-                    <th>STATUS</th>
-                    <th>SERIOUSNESS</th>
-                    <th>START DATE</th>
-                    <th>DUE DATE</th>
+                    <th>BUG TITLE
+                        <select class="form-control" id="bugsNameSort">
+                            <option value="" disabled selected>Sort</option>
+                            <option value="">None</option>
+                            <option value="1">Ascending</option>
+                            <option value="2">Descending</option>
+                        </select>
+                    </th>
+                    <th>DEV ASSIGNED
+                        <select class="form-control" id="devNameSort">
+                            <option value="" disabled selected>Sort</option>
+                            <option value="">None</option>
+                            <option value="1">Ascending</option>
+                            <option value="2">Descending</option>
+                        </select>
+                    </th>
+                    <th>STATUS
+                        <select class="form-control" id="statusSort">
+                            <option value="" disabled selected>Sort</option>
+                            <option value="">None</option>
+                            <option value="1">Closed to Open</option>
+                            <option value="2">Open to Closed</option>
+                        </select>
+                    </th>
+                    <th>SERIOUSNESS
+                        <select class="form-control" id="seriousnessSort">
+                            <option value="" disabled selected>Sort</option>
+                            <option value="">None</option>
+                            <option value="1">Low to Higher</option>
+                            <option value="2">Higher to Low</option>
+                        </select>
+                    </th>
+                    <th>START DATE
+                        <select class="form-control" id="startDateSort">
+                            <option value="" disabled selected>Sort</option>
+                            <option value="">None</option>
+                            <option value="1">Ascending</option>
+                            <option value="2">Descending</option>
+                        </select>
+                    </th>
+                    <th>DUE DATE
+                        <select class="form-control" id="dueDateSort">
+                            <option value="" disabled selected>Sort</option>
+                            <option value="">None</option>
+                            <option value="1">Ascending</option>
+                            <option value="2">Descending</option>
+                        </select>
+                    </th>
                 </tr>
             </thead>
         </table>
@@ -82,6 +108,6 @@
         <div style= "max-height: 500px; overflow:auto;" id="showData"></div>
     </div>
     <script src="../JSON/bugdata.js"></script>
-    <script src="../js/bugSearch.js"></script>
+    <script src="../js/adminSearch.js"></script>
 </body>
 </html>

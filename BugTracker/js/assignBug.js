@@ -63,23 +63,23 @@ var AddDataToJSON = {
         let bugName = AddDataToJSON.settings.bugName.value;
         let devName = AddDataToJSON.settings.devName.value;
         let status = AddDataToJSON.settings.status.value;
-        let seriousness = AddDataToJSON.settings.seriousness.value;
+        let seriousness = AddDataToJSON.settings.seriousness.value.toLowerCase();
         let openDate = AddDataToJSON.settings.openDate.value;
         let closeDate = AddDataToJSON.settings.closeDate.value;
         var value;
-        if(seriousness == "Low")
+        if(seriousness == "low")
         {
             value = 1;
         }
-        else if(seriousness == "Medium")
+        else if(seriousness == "medium")
         {
             value = 2;
         }
-        else if(seriousness == "High")
+        else if(seriousness == "high")
         {
             value = 3;
         }
-        else if(seriousness == "Higher")
+        else if(seriousness == "higher")
         {
             value = 4;
         }
@@ -89,9 +89,9 @@ var AddDataToJSON = {
             "developername": devName,
             "status": status,
             "seriousness": seriousness,
-            "opendate": openDate,
-            "closedate": closeDate,
             "value": value,
+            "opendate": openDate,
+            "closedate": closeDate,   
         }
         bugdata.push(dataObject);
         alert("Data added successfully");
